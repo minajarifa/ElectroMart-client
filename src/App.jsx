@@ -1,10 +1,15 @@
+import { Outlet } from 'react-router-dom'
 import './App.css'
+import Header from './Shared/Header/Header'
+import Footer from './Shared/Footer/Footer'
 
 function App() {
 
   return (
     <>
-      <h1>Vite + React</h1>
+    <Header/>
+      <Outlet/>
+      <Footer/>
     </>
   )
 }
