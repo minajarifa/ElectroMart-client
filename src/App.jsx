@@ -8,7 +8,10 @@ function App() {
   return (
     <>
     <Header/>
+    <div className=''>
+
       <Outlet/>
+    </div>
       <Footer/>
     </>
   )

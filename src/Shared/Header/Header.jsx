@@ -16,7 +16,7 @@ export default function Header() {
   );
   return (
     <div>
-      <div className="shadow-sm navbar bg-base-100">
+      <div className="fixed z-10 border-t-0 shadow-sm bg-opacity-30 navbar bg-base-100">
         <div className="navbar-start">
           <div className="dropdown">
             <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
