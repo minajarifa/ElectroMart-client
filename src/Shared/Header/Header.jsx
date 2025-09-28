@@ -1,19 +1,37 @@
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 export default function Header() {
   const navOptions = (
     <>
-      <Link className="m-4" to="/">
+      <NavLink
+        to="/"
+        className={({ isActive }) =>
+          isActive ? "m-4 text-blue-500 font-bold" : "m-4"
+        }
+      >
         Home
-      </Link>
-      <Link className="m-4" to="/">
-        Home
-      </Link>
-      <Link className="m-4" to="/">
-        Home
-      </Link>
+      </NavLink>
+
+      <NavLink
+        to="/about"
+        className={({ isActive }) =>
+          isActive ? "m-4 text-blue-500 font-bold" : "m-4"
+        }
+      >
+        About
+      </NavLink>
+
+      <NavLink
+        to="/services"
+        className={({ isActive }) =>
+          isActive ? "m-4 text-blue-500 font-bold" : "m-4"
+        }
+      >
+        Services
+      </NavLink>
     </>
   );
+
   return (
     <div>
       <div className="fixed z-10 border-t-0 shadow-sm bg-opacity-30 navbar bg-base-100">
@@ -67,10 +85,24 @@ export default function Header() {
               className="p-2 mt-3 shadow menu menu-sm dropdown-content bg-base-100 rounded-box z-1 w-52"
             >
               <li>
-               <Link to="/Register">Register</Link>
+                <NavLink
+                  to="/Register"
+                  className={({ isActive }) =>
+                    isActive ? " text-blue-500 font-bold" : ""
+                  }
+                >
+                  Register
+                </NavLink>
               </li>
               <li>
-                <Link to="/Login">Login</Link>
+                <NavLink
+                  className={({ isActive }) =>
+                    isActive ? " text-blue-500 font-bold" : ""
+                  }
+                  to="/Login"
+                >
+                  Login
+                </NavLink>
               </li>
               <li>
                 <a>Logout</a>
