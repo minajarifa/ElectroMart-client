@@ -3,10 +3,13 @@ import loginLottieData from "../../../public/registerLottie/loginLottee.json.jso
 import useAuth from "../../hooks/useAuth";
 import Swal from "sweetalert2";
 import { Link, useNavigate } from "react-router-dom";
+import SocialLogin from "../../Shared/SocialLogin/SocialLogin";
+import useAxios from "../../hooks/useAxios";
 
 export default function Register() {
   const { createUser, updateUserProfile } = useAuth();
-  const navigate = useNavigate()
+  const axiosURL = useAxios();
+  const navigate = useNavigate();
   const handleRegister = (e) => {
     e.preventDefault();
     const form = e.target;
@@ -14,7 +17,8 @@ export default function Register() {
     const photo = form.photo.value;
     const email = form.email.value;
     const password = form.password.value;
-    const userInfo = { name, email, password, photo };
+    const role = "user";
+    const userInfo = { name, email, password, photo, role };
     console.log(userInfo);
     createUser(email, password).then((result) => {
       result.user;
@@ -24,15 +28,19 @@ export default function Register() {
           name,
           photo,
           email,
+          role:"user"
         };
-        console.log(userInfo);
+        axiosURL.post("/users", userInfo).then((res) => {
+          if (res.data.insertedId) {
+            Swal.fire({
+              title: "Create user successfully!",
+              icon: "success",
+              draggable: true,
+            });
+            navigate("/");
+          }
+        });
       });
-      Swal.fire({
-        title: "Create user successfully!",
-        icon: "success",
-        draggable: true,
-      });
-      navigate('/')
     });
   };
   return (
@@ -79,7 +87,14 @@ export default function Register() {
               <button className="mt-4 btn btn-neutral">Login</button>
             </fieldset>
           </form>
-         <p className="mb-10 ml-5">Already have an account? please <Link className="text-xl font-bold text-blue-600" to='/Login'>Login</Link> now</p> 
+          <p className="mb-10 ml-5">
+            Already have an account? please{" "}
+            <Link className="text-xl font-bold text-blue-600" to="/Login">
+              Login
+            </Link>{" "}
+            now
+          </p>
+          <SocialLogin />
         </div>
       </div>
     </div>

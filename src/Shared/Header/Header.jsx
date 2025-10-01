@@ -76,12 +76,13 @@ export default function Header() {
           >
             <div className="w-10 rounded-full">
               <img
-                alt="Tailwind CSS Navbar component"
+               referrerPolicy="no-referrer"
                 src={
                   user
                     ? user?.photoURL
                     : "https://i.ibb.co.com/27rSBcKC/download.png"
                 }
+                alt="Profile"
               />
             </div>
           </div>
@@ -89,29 +90,34 @@ export default function Header() {
             tabIndex={0}
             className="p-2 mt-3 shadow menu menu-sm dropdown-content bg-base-100 rounded-box z-1 w-52"
           >
-            <li>
-              <NavLink
-                to="/Register"
-                className={({ isActive }) =>
-                  isActive ? " text-blue-500 font-bold" : ""
-                }
-              >
-                Register
-              </NavLink>
-            </li>
-            <li>
-              <NavLink
-                className={({ isActive }) =>
-                  isActive ? " text-blue-500 font-bold" : ""
-                }
-                to="/Login"
-              >
-                Login
-              </NavLink>
-            </li>
-            <li>
-              <a>Logout</a>
-            </li>
+            {user ? (
+              <li>
+                <a>Logout</a>
+              </li>
+            ) : (
+              <>
+                <li>
+                  <NavLink
+                    to="/Register"
+                    className={({ isActive }) =>
+                      isActive ? " text-blue-500 font-bold" : ""
+                    }
+                  >
+                    Register
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink
+                    className={({ isActive }) =>
+                      isActive ? " text-blue-500 font-bold" : ""
+                    }
+                    to="/Login"
+                  >
+                    Login
+                  </NavLink>
+                </li>
+              </>
+            )}
           </ul>
         </div>
         {/*  */}

@@ -12,7 +12,7 @@ function App() {
   return (
      <>
       {noHeaderFooter || <Header />}
-     <div className="pt-36">
+     <div className="mb-10 pt-36">
        <Outlet></Outlet>
      </div>
       {noHeaderFooter || <Footer />}

@@ -2,6 +2,7 @@ import useAuth from "../../hooks/useAuth";
 import lotte from "../../../public/registerLottie/lotte.json.json";
 import { Link, useNavigate } from "react-router-dom";
 import Lottie from "lottie-react";
+import SocialLogin from "../../Shared/SocialLogin/SocialLogin";
 
 export default function Login() {
    const navigate = useNavigate()
@@ -13,7 +14,7 @@ export default function Login() {
     const password = form.password.value;
     signIn(email, password).then((result) => {
       console.log(result.user);
-      navigate('/')
+      navigate('/');
     });
   };
   return (
@@ -51,6 +52,7 @@ export default function Login() {
             </Link>
               now
           </p>
+          <SocialLogin></SocialLogin>
         </div>
       </div>
     </div>
