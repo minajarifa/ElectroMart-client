@@ -3,18 +3,37 @@ import lotte from "../../../public/registerLottie/lotte.json.json";
 import { Link, useNavigate } from "react-router-dom";
 import Lottie from "lottie-react";
 import SocialLogin from "../../Shared/SocialLogin/SocialLogin";
+import useAxios from "../../hooks/useAxios";
+import Swal from "sweetalert2";
 
 export default function Login() {
-   const navigate = useNavigate()
+  const navigate = useNavigate();
   const { signIn } = useAuth();
+  const axiosURL = useAxios();
   const handleLogin = (e) => {
-    e.preventDefault()
+    e.preventDefault();
     const form = e.target;
     const email = form.email.value;
     const password = form.password.value;
     signIn(email, password).then((result) => {
       console.log(result.user);
-      navigate('/');
+      const userInfo = {
+        email: result.user.email,
+        name: result.user.displayName,
+        photo: result.user.photoURL,
+        role: "user",
+      };
+      axiosURL.post("/users", userInfo).then((res) => {
+        // if (res.data.insertedId) {
+        //   Swal.fire({
+        //     title: "Create user successfully!",
+        //     icon: "success",
+        //     draggable: true,
+        //   });
+        // }
+        res.data;
+        navigate("/");
+      });
     });
   };
   return (
@@ -46,11 +65,14 @@ export default function Login() {
             </fieldset>
           </form>
           <p className="mb-10 ml-5">
-            Already have an account? please   
-            <Link className="mx-2 text-xl font-bold text-blue-600" to="/Register">
-              Register   
+            Already have an account? please
+            <Link
+              className="mx-2 text-xl font-bold text-blue-600"
+              to="/Register"
+            >
+              Register
             </Link>
-              now
+            now
           </p>
           <SocialLogin></SocialLogin>
         </div>

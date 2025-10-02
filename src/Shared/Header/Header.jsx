@@ -76,7 +76,7 @@ export default function Header() {
           >
             <div className="w-10 rounded-full">
               <img
-               referrerPolicy="no-referrer"
+                referrerPolicy="no-referrer"
                 src={
                   user
                     ? user?.photoURL
@@ -118,6 +118,16 @@ export default function Header() {
                 </li>
               </>
             )}
+            <li>
+              <NavLink
+                className={({ isActive }) =>
+                  isActive ? " text-blue-500 font-bold" : ""
+                }
+                to="/AdminDashboard/AdminPage"
+              >
+                Admin Dashboard
+              </NavLink>
+            </li>
           </ul>
         </div>
         {/*  */}
