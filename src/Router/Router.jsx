@@ -7,7 +7,9 @@ import ProductList from "../Page/ProductList/ProductList";
 import PrivateRoute from "../Page/PrivateRoute/PrivateRoute";
 import ErrorPage from "../Page/ErrorPage/ErrorPage";
 import AdminDashboard from "./AdminDashboard";
-import AdminPage from "../Page/Admin/AdminPage/AdminPage";
+import AdminUsersManage from "../Page/Admin/AdminUsersManage/AdminUsersManage";
+import MyProfile from "../Page/Admin/MyProfile/MyProfile";
+import AddProduct from "../Page/Admin/AddProduct/AddProduct";
 
 export const router = createBrowserRouter([
   {
@@ -43,10 +45,26 @@ export const router = createBrowserRouter([
     errorElement: <ErrorPage></ErrorPage>,
     children: [
       {
-        path: "/AdminDashboard/AdminPage",
+        path: "/AdminDashboard/AdminUsersManage",
         element: (
           <PrivateRoute>
-            <AdminPage/>
+            <AdminUsersManage/>
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "/AdminDashboard/MyProfile",
+        element: (
+          <PrivateRoute>
+            <MyProfile/>
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "/AdminDashboard/AddProduct",
+        element: (
+          <PrivateRoute>
+            <AddProduct/>
           </PrivateRoute>
         ),
       },

@@ -123,7 +123,7 @@ export default function Header() {
                 className={({ isActive }) =>
                   isActive ? " text-blue-500 font-bold" : ""
                 }
-                to="/AdminDashboard/AdminPage"
+                to="/AdminDashboard/AdminUsersManage"
               >
                 Admin Dashboard
               </NavLink>
