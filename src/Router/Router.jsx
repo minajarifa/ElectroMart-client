@@ -10,6 +10,7 @@ import AdminDashboard from "./AdminDashboard";
 import AdminUsersManage from "../Page/Admin/AdminUsersManage/AdminUsersManage";
 import MyProfile from "../Page/Admin/MyProfile/MyProfile";
 import AddProduct from "../Page/Admin/AddProduct/AddProduct";
+import ProductsManagemment from "../Page/Admin/ProductsManagement/ProductsManagemment";
 
 export const router = createBrowserRouter([
   {
@@ -65,6 +66,14 @@ export const router = createBrowserRouter([
         element: (
           <PrivateRoute>
             <AddProduct/>
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "/AdminDashboard/ProductsManagemment",
+        element: (
+          <PrivateRoute>
+            <ProductsManagemment/>
           </PrivateRoute>
         ),
       },

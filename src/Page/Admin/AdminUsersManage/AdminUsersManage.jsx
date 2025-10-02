@@ -25,7 +25,6 @@ export default function AdminUsersManage() {
   }
 });
   }
-  console.log(users);
   return (
     <section className="container px-4 mx-auto">
       <div className="flex items-center gap-x-3">

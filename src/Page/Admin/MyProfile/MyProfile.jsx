@@ -7,7 +7,7 @@ export default function MyProfile() {
 //   console.log("userOne",userOne)
  
   return (
-    <div className="">
+    <div >
       {/*  */}
       <div className="max-w-xs overflow-hidden bg-white rounded-lg shadow-lg dark:bg-gray-800">
         <img

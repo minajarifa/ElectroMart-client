@@ -1,7 +1,14 @@
+import { RiDeleteBin6Fill } from "react-icons/ri";
 import useAuth from "../../hooks/useAuth";
+import useUsers from "../../hooks/useUsers";
+import { FaPenToSquare } from "react-icons/fa6";
+import Swal from "sweetalert2";
+import useAxios from "../../hooks/useAxios";
 
 export default function ProductDetails({ product }) {
   const { user } = useAuth();
+  const [, userOne] = useUsers();
+  const axiosURL = useAxios();
   const {
     category,
     createdAt,
@@ -17,11 +24,33 @@ export default function ProductDetails({ product }) {
     updatedAt,
     _id,
   } = product;
-  // console.log(product);
+  const handleDeleteButton = (id) => {
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        axiosURL.delete(`/products/${id}`).then((res) => {
+          if (res.data.deletedCount) {
+            Swal.fire({
+              title: "Deleted!",
+              text: "Your file has been deleted.",
+              icon: "success",
+            });
+          }
+        });
+      }
+    });
+  };
+  console.log(userOne.role);
   return (
     <div className="max-w-2xl overflow-hidden bg-white rounded-lg shadow-md dark:bg-gray-800">
       <img className="object-cover w-full h-64" src={images} alt="Article" />
-
       <div className="p-6">
         <div>
           <span className="text-xs font-medium text-blue-600 uppercase dark:text-blue-400">
@@ -37,7 +66,6 @@ export default function ProductDetails({ product }) {
             {description}
           </p>
         </div>
-
         <div className="mt-4">
           <div className="flex items-center">
             <div className="flex items-center">
@@ -61,6 +89,22 @@ export default function ProductDetails({ product }) {
             </span>
           </div>
         </div>
+        {userOne?.role === "admin" && (
+          <div className="gap-5">
+            {/* product card delete */}
+            <button className="m-2 btn btn-soft">
+              <FaPenToSquare />
+              Update
+            </button>
+            <button
+              onClick={() => handleDeleteButton(_id)}
+              className="m-2 btn btn-soft btn-error"
+            >
+              <RiDeleteBin6Fill />
+              Delete
+            </button>
+          </div>
+        )}
       </div>
     </div>
   );

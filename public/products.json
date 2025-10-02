@@ -1,6 +1,5 @@
 [
   {
-    "_id": "p1",
     "name": "Samsung Galaxy S23 Ultra",
     "slug": "samsung-galaxy-s23-ultra",
     "description": "Flagship smartphone with 200MP camera, Snapdragon 8 Gen 2 processor, and 5000mAh battery.",
@@ -15,7 +14,6 @@
     "updatedAt": "2025-02-01T12:00:00Z"
   },
   {
-    "_id": "p2",
     "name": "Apple MacBook Air M2",
     "slug": "apple-macbook-air-m2",
     "description": "Lightweight laptop powered by Apple M2 chip, 13.6-inch Liquid Retina display, 18-hour battery life.",
@@ -30,7 +28,6 @@
     "updatedAt": "2025-02-02T11:00:00Z"
   },
   {
-    "_id": "p3",
     "name": "Sony WH-1000XM5 Tablet",
     "slug": "sony-wh-1000xm5-Tablet",
     "description": "Industry-leading noise-canceling headphones with 30-hour battery life and premium sound quality.",
@@ -45,13 +42,12 @@
     "updatedAt": "2025-02-03T16:00:00Z"
   },
   {
-    "_id": "p4",
     "name": "Dell XPS 15",
     "slug": "dell-xps-15",
     "description": "High-performance 15-inch laptop with Intel i7 processor, RTX 4050 graphics, and OLED display.",
     "price": 1899,
     "category": "Laptop",
-    "images":"https://i.ibb.co.com/Kczqq0LQ/download.jpg",
+    "images": "https://i.ibb.co.com/Kczqq0LQ/download.jpg",
     "quantity": 25,
     "sold": 60,
     "rating": 4.6,
@@ -60,7 +56,6 @@
     "updatedAt": "2025-02-01T10:00:00Z"
   },
   {
-    "_id": "p5",
     "name": "iPad Pro 12.9 (2024)",
     "slug": "ipad-pro-12-9-2024",
     "description": "Latest iPad Pro with M3 chip, Liquid Retina XDR display, and Apple Pencil 2 support.",
@@ -75,7 +70,6 @@
     "updatedAt": "2025-02-04T09:00:00Z"
   },
   {
-    "_id": "p6",
     "name": "Logitech MX Master 3S Mouse",
     "slug": "logitech-mx-master-3s-mouse",
     "description": "Ergonomic wireless mouse with MagSpeed scroll wheel, silent clicks, and USB-C fast charging.",
@@ -90,7 +84,6 @@
     "updatedAt": "2025-02-05T17:00:00Z"
   },
   {
-    "_id": "p7",
     "name": "Desktop 55-inch QLED 4K TV",
     "slug": "Desktop-55-inch-qled-4k-tv",
     "description": "Smart QLED TV with 4K resolution, HDR10+, and built-in Alexa voice control.",
@@ -105,7 +98,6 @@
     "updatedAt": "2025-02-02T13:00:00Z"
   },
   {
-    "_id": "p8",
     "name": "Canon EOS R7 Mirrorless Camera",
     "slug": "canon-eos-r7-mirrorless-camera",
     "description": "APS-C mirrorless camera with 32.5MP sensor, 4K60 video, and Dual Pixel CMOS AF.",
@@ -120,13 +112,12 @@
     "updatedAt": "2025-02-03T15:00:00Z"
   },
   {
-    "_id": "p9",
     "name": "Refrigerator",
     "slug": "Refrigerator-26800-power-bank",
     "description": "High-capacity portable charger with 26800mAh battery, PowerIQ fast charging, and 3 USB ports.",
     "price": 79,
     "category": "Accessories",
-    "images":"https://i.ibb.co.com/Tq8mVq1P/download.jpg",
+    "images": "https://i.ibb.co.com/Tq8mVq1P/download.jpg",
     "quantity": 300,
     "sold": 500,
     "rating": 4.9,
@@ -135,13 +126,12 @@
     "updatedAt": "2025-02-01T14:00:00Z"
   },
   {
-    "_id": "p10",
     "name": "AC",
     "slug": "razer-blackwidow-v4-mechanical-keyboard",
     "description": "RGB backlit mechanical keyboard with Razer Green switches, dedicated media keys, and wrist rest.",
     "price": 199,
     "category": "Ac",
-    "images":"https://i.ibb.co.com/tRwXTf7/images.jpg", 
+    "images": "https://i.ibb.co.com/tRwXTf7/images.jpg",
     "quantity": 80,
     "sold": 160,
     "rating": 4.5,

@@ -11,7 +11,7 @@ export default function AdminDashboard() {
   return (
     <div className="flex">
       {/*  */}
-      <div>
+      <div className="">
         <aside className="flex flex-col w-64 h-screen px-5 py-8 overflow-y-auto bg-white border-r rtl:border-r-0 rtl:border-l dark:bg-gray-900 dark:border-gray-700">
           <a>
             <img className="w-auto rounded-full h-7" src="/icon.png" alt="" />
@@ -38,7 +38,7 @@ export default function AdminDashboard() {
                 </span>
               </Link>
               <Link
-                to="/AdminDashboard/AdminPage"
+                to="/AdminDashboard/ProductsManagemment"
                 className="flex items-center px-3 py-2 text-gray-600 transition-colors duration-300 transform rounded-lg dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-gray-200 hover:text-gray-700"
               >
                 <MdOutlineProductionQuantityLimits />
@@ -55,7 +55,7 @@ export default function AdminDashboard() {
                   Orders Management
                 </span>
               </Link>
-              <div className="divider"></div>
+              <div className="dipvider"></div>
               {/* Header section Link */}
               <Link
                 to="/"
@@ -91,7 +91,7 @@ export default function AdminDashboard() {
         </aside>
       </div>
       {/*  */}
-      <div className="ml-10">
+      <div className="ml-10 lg:w-full ">
         <Outlet></Outlet>
       </div>
     </div>
