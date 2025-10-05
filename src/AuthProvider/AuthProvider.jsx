@@ -29,7 +29,7 @@ export default function AuthProvider({ children }) {
   //   logout
   const logout = () => {
     setLoading(true);
-    return signOut(auth);
+    return signOut(auth)
   };
   // update photo , user name
   const updateUserProfile = (name, photo) => {
@@ -47,8 +47,8 @@ export default function AuthProvider({ children }) {
   useEffect(() => {
     const unsunscribe = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);
-      console.log("current User", currentUser);
       setLoading(false);
+      console.log("current User", currentUser);
     });
     return () => {
       return () => unsunscribe();

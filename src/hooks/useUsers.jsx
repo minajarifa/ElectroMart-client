@@ -1,24 +1,33 @@
 import { useEffect, useState } from "react";
-import useAxios from "./useAxios";
 import useAuth from "./useAuth";
+import useAxiosSecure from "./useAxiosSecure";
+import { useQuery } from "@tanstack/react-query";
 
 export default function useUsers() {
-  const axiosURL = useAxios();
+  const axiosSecureURL = useAxiosSecure();
   const { user } = useAuth();
-  const [users, setUsers] = useState([]);
+  // const [users, setUsers] = useState([]);
   const [userOne, setUserOne] = useState([]);
   // All users Data
-  useEffect(() => {
-    axiosURL.get("/users").then((res) => {
-      setUsers(res.data);
-    });
-  }, [axiosURL]);
+  const { data: users = [] } = useQuery({
+    queryKey: ["users"],
+    queryFn: async () => {
+      const res = await axiosSecureURL.get("/users");
+      return res.data;
+    },
+  });
+
+  // useEffect(() => {
+  //   axiosSecureURL.get("/users").then((res) => {
+  //     setUsers(res.data);
+  //   });
+  // }, [axiosSecureURL]);
   // single Users Data
   useEffect(() => {
-    axiosURL.get(`/user/${user?.email}`).then((res) => {
+    axiosSecureURL.get(`/user/${user?.email}`).then((res) => {
       setUserOne(res.data);
     });
-  }, [axiosURL, user.email]);
+  }, [axiosSecureURL, user.email]);
 
   return [users, userOne];
 }

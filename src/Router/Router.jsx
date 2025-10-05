@@ -11,6 +11,7 @@ import AdminUsersManage from "../Page/Admin/AdminUsersManage/AdminUsersManage";
 import MyProfile from "../Page/Admin/MyProfile/MyProfile";
 import AddProduct from "../Page/Admin/AddProduct/AddProduct";
 import ProductsManagemment from "../Page/Admin/ProductsManagement/ProductsManagemment";
+import ProductUpdate from "../Page/Admin/ProductsManagement/ProductUpdate";
 
 export const router = createBrowserRouter([
   {
@@ -49,7 +50,7 @@ export const router = createBrowserRouter([
         path: "/AdminDashboard/AdminUsersManage",
         element: (
           <PrivateRoute>
-            <AdminUsersManage/>
+            <AdminUsersManage />
           </PrivateRoute>
         ),
       },
@@ -57,7 +58,7 @@ export const router = createBrowserRouter([
         path: "/AdminDashboard/MyProfile",
         element: (
           <PrivateRoute>
-            <MyProfile/>
+            <MyProfile />
           </PrivateRoute>
         ),
       },
@@ -65,7 +66,7 @@ export const router = createBrowserRouter([
         path: "/AdminDashboard/AddProduct",
         element: (
           <PrivateRoute>
-            <AddProduct/>
+            <AddProduct />
           </PrivateRoute>
         ),
       },
@@ -73,7 +74,15 @@ export const router = createBrowserRouter([
         path: "/AdminDashboard/ProductsManagemment",
         element: (
           <PrivateRoute>
-            <ProductsManagemment/>
+            <ProductsManagemment />
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "/AdminDashboard/ProductsManagemment/:id",
+        element: (
+          <PrivateRoute>
+            <ProductUpdate/>
           </PrivateRoute>
         ),
       },

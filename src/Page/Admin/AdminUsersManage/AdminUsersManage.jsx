@@ -5,6 +5,7 @@ import Swal from "sweetalert2";
 
 export default function AdminUsersManage() {
   const [users,] = useUsers();
+  // console.log(users)
   const handleDeleteButton=(id)=>{
     Swal.fire({
   title: "Are you sure?",

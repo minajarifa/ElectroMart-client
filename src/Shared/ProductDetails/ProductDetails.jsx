@@ -4,6 +4,7 @@ import useUsers from "../../hooks/useUsers";
 import { FaPenToSquare } from "react-icons/fa6";
 import Swal from "sweetalert2";
 import useAxios from "../../hooks/useAxios";
+import { Link } from "react-router-dom";
 
 export default function ProductDetails({ product }) {
   const { user } = useAuth();
@@ -92,10 +93,10 @@ export default function ProductDetails({ product }) {
         {userOne?.role === "admin" && (
           <div className="gap-5">
             {/* product card delete */}
-            <button className="m-2 btn btn-soft">
+            <Link to={`/AdminDashboard/ProductsManagemment/${_id}`} className="m-2 btn btn-soft">
               <FaPenToSquare />
               Update
-            </button>
+            </Link>
             <button
               onClick={() => handleDeleteButton(_id)}
               className="m-2 btn btn-soft btn-error"
