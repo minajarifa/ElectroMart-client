@@ -3,9 +3,10 @@ import useUsers from "../../../hooks/useUsers";
 import { RiDeleteBin6Fill } from "react-icons/ri";
 import Swal from "sweetalert2";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
+import { GrUserAdmin } from "react-icons/gr";
 
 export default function AdminUsersManage() {
-  const [users,, refetch] = useUsers();
+  const [users, , refetch] = useUsers();
   const axiosSecureURL = useAxiosSecure();
   const handleDeleteButton = (id) => {
     Swal.fire({
@@ -32,6 +33,9 @@ export default function AdminUsersManage() {
       }
     });
   };
+  const handleMakeAdmin=(id)=>{
+    console.log(id)
+  }
   return (
     <section className="container px-4 mx-auto">
       <div className="flex items-center gap-x-3">
@@ -82,7 +86,7 @@ export default function AdminUsersManage() {
                       scope="col"
                       className="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400"
                     >
-                      Teams
+                      Make admin
                     </th>
 
                     <th scope="col" className="relative py-3.5 px-4">
@@ -121,17 +125,11 @@ export default function AdminUsersManage() {
                         {userOne.email}
                       </td>
                       <td className="px-4 py-4 text-sm whitespace-nowrap">
-                        <div className="flex items-center gap-x-2">
+                        <button onClick={()=>handleMakeAdmin(userOne._id)} className="flex items-center gap-x-2">
                           <p className="px-3 py-1 text-xs text-indigo-500 rounded-full dark:bg-gray-800 bg-indigo-100/60">
-                            Design
+                            <GrUserAdmin />
                           </p>
-                          <p className="px-3 py-1 text-xs text-blue-500 rounded-full dark:bg-gray-800 bg-blue-100/60">
-                            Product
-                          </p>
-                          <p className="px-3 py-1 text-xs text-pink-500 rounded-full dark:bg-gray-800 bg-pink-100/60">
-                            Marketing
-                          </p>
-                        </div>
+                        </button>
                       </td>
                       <td className="px-4 py-4 text-sm whitespace-nowrap">
                         <div className="flex items-center gap-x-6">
