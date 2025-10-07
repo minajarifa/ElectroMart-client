@@ -33,9 +33,31 @@ export default function AdminUsersManage() {
       }
     });
   };
-  const handleMakeAdmin=(id)=>{
-    console.log(id)
-  }
+  const handleMakeAdmin = (id, name) => {
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You want to change to user role!",
+      icon: "success",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, changed it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        // console.log(id);
+        axiosSecureURL.patch(`/users/admin/${id}`).then((res) => {
+          if (res.data.modifiedCount > 0) {
+            refetch();
+            Swal.fire({
+              title: `${name} is an admin now!`,
+              text: "Your file has been changed.",
+              icon: "success",
+            });
+          }
+        });
+      }
+    });
+  };
   return (
     <section className="container px-4 mx-auto">
       <div className="flex items-center gap-x-3">
@@ -125,11 +147,20 @@ export default function AdminUsersManage() {
                         {userOne.email}
                       </td>
                       <td className="px-4 py-4 text-sm whitespace-nowrap">
-                        <button onClick={()=>handleMakeAdmin(userOne._id)} className="flex items-center gap-x-2">
-                          <p className="px-3 py-1 text-xs text-indigo-500 rounded-full dark:bg-gray-800 bg-indigo-100/60">
-                            <GrUserAdmin />
-                          </p>
-                        </button>
+                        {userOne?.role === "admin" ? (
+                          "admin"
+                        ) : (
+                          <button
+                            onClick={() =>
+                              handleMakeAdmin(userOne._id, userOne?.name)
+                            }
+                            className="flex items-center gap-x-2"
+                          >
+                            <p className="px-3 py-1 text-xs text-indigo-500 rounded-full dark:bg-gray-800 bg-indigo-100/60">
+                              <GrUserAdmin />
+                            </p>
+                          </button>
+                        )}
                       </td>
                       <td className="px-4 py-4 text-sm whitespace-nowrap">
                         <div className="flex items-center gap-x-6">
