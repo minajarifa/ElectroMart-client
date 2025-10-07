@@ -1,13 +1,15 @@
-import { useEffect, useState } from "react";
 import useAxios from "./useAxios";
+import { useQuery } from "@tanstack/react-query";
 
 export default function useProducts() {
   const axiosURL = useAxios();
-  const [products, setProducts] = useState();
-  useEffect(() => {
-    axiosURL.get("/products").then((res) => {
-      setProducts(res.data);
-    });
-  }, [axiosURL]);
+
+  const { data: products = [] } = useQuery({
+    queryKey: ["products"],
+    queryFn: async () => {
+      const res = await axiosURL.get("/products")
+      return res.data
+    },
+  });
   return [products];
 }

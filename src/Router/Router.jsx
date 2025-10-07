@@ -21,23 +21,23 @@ export const router = createBrowserRouter([
     children: [
       {
         path: "/",
-        element: <Home />,
+        element: <Home/>,
       },
       {
         path: "/ProductList",
         element: (
           <PrivateRoute>
-            <ProductList />
+            <ProductList/>
           </PrivateRoute>
         ),
       },
       {
         path: "/Register",
-        element: <Register />,
+        element: <Register/>,
       },
       {
         path: "/Login",
-        element: <Login />,
+        element: <Login/>,
       },
     ],
   },

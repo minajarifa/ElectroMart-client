@@ -7,24 +7,10 @@ import useAxios from "../../hooks/useAxios";
 import { Link } from "react-router-dom";
 
 export default function ProductDetails({ product }) {
+  console.log("product",product);
   const { user } = useAuth();
-  const [, userOne] = useUsers();
+  const [ userOne,] = useUsers();
   const axiosURL = useAxios();
-  const {
-    category,
-    createdAt,
-    description,
-    images,
-    name,
-    price,
-    // quantity,
-    // rating,
-    // reviewsCount,
-    // slug,
-    // sold,
-    updatedAt,
-    _id,
-  } = product;
   const handleDeleteButton = (id) => {
     Swal.fire({
       title: "Are you sure?",
@@ -48,23 +34,23 @@ export default function ProductDetails({ product }) {
       }
     });
   };
-  console.log(userOne.role);
+  console.log(userOne?.role);
   return (
     <div className="max-w-2xl overflow-hidden bg-white rounded-lg shadow-md dark:bg-gray-800">
-      <img className="object-cover w-full h-64" src={images} alt="Article" />
+      <img className="object-cover w-full h-64" src={product?.images} alt="Article" />
       <div className="p-6">
         <div>
           <span className="text-xs font-medium text-blue-600 uppercase dark:text-blue-400">
-            {category}
+            {product?.category}
           </span>
           <a
             href="#"
             className="block mt-2 text-xl font-semibold text-gray-800 transition-colors duration-300 transform dark:text-white hover:text-gray-600 hover:underline"
           >
-            {name} : {price}$
+            {product?.name} : {product?.price}$
           </a>
           <p className="mt-2 text-sm text-gray-600 dark:text-gray-400">
-            {description}
+            {product?.description}
           </p>
         </div>
         <div className="mt-4">
@@ -83,22 +69,22 @@ export default function ProductDetails({ product }) {
               </a>
             </div>
             <span className="mx-1 text-xs text-gray-600 dark:text-gray-300">
-              post : {createdAt}
+              post : {product?.createdAt}
             </span>
             <span className="mx-1 text-xs text-gray-600 dark:text-gray-300">
-              update : {updatedAt}
+              update : {product?.updatedAt}
             </span>
           </div>
         </div>
         {userOne?.role === "admin" && (
           <div className="gap-5">
             {/* product card delete */}
-            <Link to={`/AdminDashboard/ProductsManagemment/${_id}`} className="m-2 btn btn-soft">
+            <Link to={`/AdminDashboard/ProductsManagemment/${product?._id}`} className="m-2 btn btn-soft">
               <FaPenToSquare />
               Update
             </Link>
             <button
-              onClick={() => handleDeleteButton(_id)}
+              onClick={() => handleDeleteButton(product?._id)}
               className="m-2 btn btn-soft btn-error"
             >
               <RiDeleteBin6Fill />
