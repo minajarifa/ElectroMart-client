@@ -1,8 +1,16 @@
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
 
 export default function Header() {
-  const { user } = useAuth();
+  const { user ,logout} = useAuth();
+  const navigate= useNavigate()
+  const handleLogoutButton=()=>{
+    logout()
+    .then(()=>{
+      console.log('logout')
+      navigate('/Login')
+    })
+  }
   const navOptions = (
     <>
       <NavLink
@@ -92,7 +100,7 @@ export default function Header() {
           >
             {user ? (
               <li>
-                <a>Logout</a>
+                <button onClick={handleLogoutButton}>Logout</button>
               </li>
             ) : (
               <>

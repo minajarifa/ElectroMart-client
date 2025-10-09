@@ -24,15 +24,9 @@ export default function Login() {
         role: "user",
       };
       axiosURL.post("/users", userInfo).then((res) => {
-        // if (res.data.insertedId) {
-        //   Swal.fire({
-        //     title: "Create user successfully!",
-        //     icon: "success",
-        //     draggable: true,
-        //   });
-        // }
         res.data;
         navigate("/");
+        
       });
     });
   };

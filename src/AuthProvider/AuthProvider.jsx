@@ -10,9 +10,11 @@ import {
 } from "firebase/auth";
 import { createContext, useEffect, useState } from "react";
 import { auth } from "../firebase/firebase.gonfig";
+import useAxios from "../hooks/useAxios";
 
 export const AuthContext = createContext(null);
 export default function AuthProvider({ children }) {
+  const axiosURL = useAxios();
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
   const googleProvider = new GoogleAuthProvider();
@@ -29,7 +31,7 @@ export default function AuthProvider({ children }) {
   //   logout
   const logout = () => {
     setLoading(true);
-    return signOut(auth)
+    return signOut(auth);
   };
   // update photo , user name
   const updateUserProfile = (name, photo) => {
@@ -44,16 +46,28 @@ export default function AuthProvider({ children }) {
     return signInWithPopup(auth, googleProvider);
   };
   //   user controler
+
   useEffect(() => {
     const unsunscribe = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);
       setLoading(false);
       console.log("current User", currentUser);
+      if (currentUser) {
+        //get token and store client
+        const userInfo = { email: currentUser.email };
+        axiosURL.post("/jwt", userInfo).then((res) => {
+          if (res.data.token) {
+            localStorage.setItem("access-token", res.data.token);
+          }
+        });
+      } else {
+        localStorage.removeItem("access-token");
+      }
     });
     return () => {
       return () => unsunscribe();
     };
-  }, []);
+  }, [axiosURL]);
 
   const authInfo = {
     user,

@@ -7,14 +7,14 @@ export default function useUsers() {
   const { user } = useAuth();
 
   // All users Data
-  const { data: users = [] ,refetch} = useQuery({
+  const { data: users = [], refetch } = useQuery({
     queryKey: ["users"],
     queryFn: async () => {
       const res = await axiosSecureURL.get("/users");
       return res.data;
     },
   });
-  //  a single data 
+  //  a single data
   const { data: userOne = [] } = useQuery({
     queryKey: ["user"],
     queryFn: async () => {
@@ -23,5 +23,5 @@ export default function useUsers() {
     },
   });
 
-  return [users, userOne,refetch];
+  return [users, userOne, refetch];
 }
