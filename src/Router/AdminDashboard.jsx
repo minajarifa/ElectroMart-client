@@ -6,8 +6,10 @@ import { LiaFirstOrderAlt } from "react-icons/lia";
 import { MdOutlineProductionQuantityLimits } from "react-icons/md";
 import { SiMyget } from "react-icons/si";
 import { Link, Outlet } from "react-router-dom";
+import useAdmin from "../hooks/useAdmin";
 
 export default function AdminDashboard() {
+  const [isAdmin] = useAdmin();
   return (
     <div className="flex">
       {/*  */}
@@ -83,8 +85,10 @@ export default function AdminDashboard() {
                 to="/ProductList"
                 className="flex items-center px-3 py-2 text-gray-600 transition-colors duration-300 transform rounded-lg dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-gray-200 hover:text-gray-700"
               >
-               <SiMyget />
-                <span className="mx-2 text-sm font-medium">My Products list</span>
+                <SiMyget />
+                <span className="mx-2 text-sm font-medium">
+                  My Products list
+                </span>
               </Link>
             </nav>
           </div>
