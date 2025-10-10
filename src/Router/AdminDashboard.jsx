@@ -9,7 +9,7 @@ import { Link, Outlet } from "react-router-dom";
 import useAdmin from "../hooks/useAdmin";
 
 export default function AdminDashboard() {
-  const [isAdmin] = useAdmin();
+  // const [isAdmin] = useAdmin();
   return (
     <div className="flex">
       {/*  */}

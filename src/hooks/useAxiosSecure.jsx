@@ -28,8 +28,8 @@ export default function useAxiosSecure() {
     const status = error.response.status;
     // console.log('status error in the interceptor arifa',status)
     if(status===401 || status===403){
-      await logout()
-     navigate('/Login')
+    //   await logout()
+    //  navigate('/Login')
     }
     return Promise.reject(error)
   })

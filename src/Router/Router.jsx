@@ -12,6 +12,7 @@ import MyProfile from "../Page/Admin/MyProfile/MyProfile";
 import AddProduct from "../Page/Admin/AddProduct/AddProduct";
 import ProductsManagemment from "../Page/Admin/ProductsManagement/ProductsManagemment";
 import ProductUpdate from "../Page/Admin/ProductsManagement/ProductUpdate";
+import AdminRoute from "./AdminRoute";
 
 export const router = createBrowserRouter([
   {
@@ -49,17 +50,17 @@ export const router = createBrowserRouter([
       {
         path: "/AdminDashboard/AdminUsersManage",
         element: (
-          <PrivateRoute>
+          <AdminRoute>
             <AdminUsersManage />
-          </PrivateRoute>
+          </AdminRoute>
         ),
       },
       {
         path: "/AdminDashboard/MyProfile",
         element: (
-          <PrivateRoute>
+          <AdminRoute>
             <MyProfile />
-          </PrivateRoute>
+          </AdminRoute>
         ),
       },
       {
@@ -73,17 +74,17 @@ export const router = createBrowserRouter([
       {
         path: "/AdminDashboard/ProductsManagemment",
         element: (
-          <PrivateRoute>
+          <AdminRoute>
             <ProductsManagemment />
-          </PrivateRoute>
+          </AdminRoute>
         ),
       },
       {
         path: "/AdminDashboard/ProductsManagemment/:id",
         element: (
-          <PrivateRoute>
+          <AdminRoute>
             <ProductUpdate/>
-          </PrivateRoute>
+          </AdminRoute>
         ),
       },
     ],
