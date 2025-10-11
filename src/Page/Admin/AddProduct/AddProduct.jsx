@@ -1,7 +1,7 @@
 import useAxios from "../../../hooks/useAxios";
 
 export default function AddProduct() {
-    const axiosURL = useAxios()
+  const axiosURL = useAxios();
   const handleSubmitButton = (event) => {
     event.preventDefault();
     const form = event.target;
@@ -10,7 +10,7 @@ export default function AddProduct() {
     const description = form.description.value;
     const price = form.price.value;
     const category = form.category.value;
-    const image = form.image.value;
+    // const image = form.image.value;
     const quantity = form.quantity.value;
     const solid = form.solid.value;
     const rating = form.rating.value;
@@ -20,17 +20,15 @@ export default function AddProduct() {
       description,
       price,
       category,
-      image,
+      // image,
       quantity,
       solid,
       rating,
     };
     console.log(userInfo);
-    axiosURL.post('/products',userInfo)
-    .then(res=>{
-        console.log(res.data)
-    })
-    
+    axiosURL.post("/products", userInfo).then((res) => {
+      console.log(res.data);
+    });
   };
   return (
     <div className="">
@@ -60,7 +58,7 @@ export default function AddProduct() {
                 className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring"
               />
             </div>
-           
+
             <div>
               <label className="text-gray-700 dark:text-gray-200">
                 description
@@ -95,7 +93,13 @@ export default function AddProduct() {
                 className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring"
               />
             </div>
-            <div>
+            <div >
+              {/* <input
+                type="file"
+                className="file-input "
+                required
+                name="image"
+              /> */}
               <label className="text-gray-700 dark:text-gray-200">Images</label>
               <input
                 type="text"
