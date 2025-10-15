@@ -1,14 +1,14 @@
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
-import useAuth from "./useAuth";
+// import { useNavigate } from "react-router-dom";
+// import useAuth from "./useAuth";
 
 export const axiosSecureURL = axios.create({
   baseURL: "http://localhost:5000",
   withCredentials:true
 });
 export default function useAxiosSecure() {
-  const navigate = useNavigate()
-    const {  logout} = useAuth();
+  // const navigate = useNavigate()
+  //   const {  logout} = useAuth();
   // request interceptor to add authentication header for every secure to teh api
   axiosSecureURL.interceptors.request.use(
     function (config) {

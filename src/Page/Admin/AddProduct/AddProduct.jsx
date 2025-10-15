@@ -1,7 +1,10 @@
-import useAxios from "../../../hooks/useAxios";
+
+
+import Swal from "sweetalert2";
+import useAxiosSecure from "../../../hooks/useAxiosSecure";
 
 export default function AddProduct() {
-  const axiosURL = useAxios();
+  const axiosSecureURL = useAxiosSecure();
   const handleSubmitButton = (event) => {
     event.preventDefault();
     const form = event.target;
@@ -26,8 +29,15 @@ export default function AddProduct() {
       rating,
     };
     console.log(userInfo);
-    axiosURL.post("/products", userInfo).then((res) => {
+    axiosSecureURL.post("/products", userInfo).then((res) => {
       console.log(res.data);
+      Swal.fire({
+  position: "top-end",
+  icon: "success",
+  title: `Your ${res.data.name} has been saved`,
+  showConfirmButton: false,
+  timer: 1500
+});
     })
   }
   return (

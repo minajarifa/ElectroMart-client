@@ -4,12 +4,13 @@ import useUsers from "../../hooks/useUsers";
 import { FaPenToSquare } from "react-icons/fa6";
 import Swal from "sweetalert2";
 import useAxios from "../../hooks/useAxios";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
-export default function ProductDetails({ product }) {
-  console.log("product",product);
+export default function ProductDetails({ product, refetch }) {
+  console.log("product", product);
+  const navigate = useNavigate();
   const { user } = useAuth();
-  const [ userOne,] = useUsers();
+  const [, userOne] = useUsers();
   const axiosURL = useAxios();
   const handleDeleteButton = (id) => {
     Swal.fire({
@@ -30,6 +31,8 @@ export default function ProductDetails({ product }) {
               icon: "success",
             });
           }
+          refetch();
+          navigate("/AdminDashboard/ProductsManagemment");
         });
       }
     });
@@ -37,7 +40,11 @@ export default function ProductDetails({ product }) {
   console.log(userOne?.role);
   return (
     <div className="max-w-2xl overflow-hidden bg-white rounded-lg shadow-md dark:bg-gray-800">
-      <img className="object-cover w-full h-64" src={product?.images} alt="Article" />
+      <img
+        className="object-cover w-full h-64"
+        src={product?.images}
+        alt="Article"
+      />
       <div className="p-6">
         <div>
           <span className="text-xs font-medium text-blue-600 uppercase dark:text-blue-400">
@@ -79,7 +86,10 @@ export default function ProductDetails({ product }) {
         {userOne?.role === "admin" && (
           <div className="gap-5">
             {/* product card delete */}
-            <Link to={`/AdminDashboard/ProductsManagemment/${product?._id}`} className="m-2 btn btn-soft">
+            <Link
+              to={`/AdminDashboard/ProductsManagemment/${product?._id}`}
+              className="m-2 btn btn-soft"
+            >
               <FaPenToSquare />
               Update
             </Link>
