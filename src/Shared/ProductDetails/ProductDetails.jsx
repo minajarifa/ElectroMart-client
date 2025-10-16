@@ -3,15 +3,15 @@ import useAuth from "../../hooks/useAuth";
 import useUsers from "../../hooks/useUsers";
 import { FaPenToSquare } from "react-icons/fa6";
 import Swal from "sweetalert2";
-import useAxios from "../../hooks/useAxios";
 import { Link, useNavigate } from "react-router-dom";
+import useAxiosSecure from "../../hooks/useAxiosSecure";
 
 export default function ProductDetails({ product, refetch }) {
   console.log("product", product);
   const navigate = useNavigate();
   const { user } = useAuth();
-  const [, userOne] = useUsers();
-  const axiosURL = useAxios();
+  const [, userOne,] = useUsers();
+  const axiosSecureURL = useAxiosSecure();
   const handleDeleteButton = (id) => {
     Swal.fire({
       title: "Are you sure?",
@@ -23,7 +23,7 @@ export default function ProductDetails({ product, refetch }) {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        axiosURL.delete(`/products/${id}`).then((res) => {
+        axiosSecureURL.delete(`/products/${id}`).then((res) => {
           if (res.data.deletedCount) {
             Swal.fire({
               title: "Deleted!",
@@ -86,6 +86,13 @@ export default function ProductDetails({ product, refetch }) {
         {userOne?.role === "admin" && (
           <div className="gap-5">
             {/* product card delete */}
+             <button
+              onClick={() => handleDeleteButton(product?._id)}
+              className="m-2 btn btn-soft btn-error"
+            >
+              <RiDeleteBin6Fill />
+              Delete
+            </button>
             <Link
               to={`/AdminDashboard/ProductsManagemment/${product?._id}`}
               className="m-2 btn btn-soft"
@@ -93,13 +100,7 @@ export default function ProductDetails({ product, refetch }) {
               <FaPenToSquare />
               Update
             </Link>
-            <button
-              onClick={() => handleDeleteButton(product?._id)}
-              className="m-2 btn btn-soft btn-error"
-            >
-              <RiDeleteBin6Fill />
-              Delete
-            </button>
+           
           </div>
         )}
       </div>

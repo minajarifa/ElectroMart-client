@@ -66,9 +66,9 @@ export const router = createBrowserRouter([
       {
         path: "/AdminDashboard/AddProduct",
         element: (
-          <PrivateRoute>
+          <AdminRoute>
             <AddProduct />
-          </PrivateRoute>
+          </AdminRoute>
         ),
       },
       {
@@ -86,6 +86,7 @@ export const router = createBrowserRouter([
             <ProductUpdate/>
           </AdminRoute>
         ),
+        loader:({params})=>fetch(`http://localhost:5000/products/${params.id}`)
       },
     ],
   },
