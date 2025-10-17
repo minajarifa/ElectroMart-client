@@ -3,7 +3,6 @@ import { useQuery } from "@tanstack/react-query";
 
 export default function useProducts() {
   const axiosURL = useAxios();
-
   const { data: products = [],refetch } = useQuery({
     queryKey: ["products"],
     queryFn: async () => {

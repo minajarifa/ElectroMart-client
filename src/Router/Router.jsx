@@ -13,6 +13,7 @@ import AddProduct from "../Page/Admin/AddProduct/AddProduct";
 import ProductsManagemment from "../Page/Admin/ProductsManagement/ProductsManagemment";
 import ProductUpdate from "../Page/Admin/ProductsManagement/ProductUpdate";
 import AdminRoute from "./AdminRoute";
+import Payment from "../Page/Payment/Payment";
 
 export const router = createBrowserRouter([
   {
@@ -87,6 +88,14 @@ export const router = createBrowserRouter([
           </AdminRoute>
         ),
         loader:({params})=>fetch(`http://localhost:5000/products/${params.id}`)
+      },
+      {
+        path: "/AdminDashboard/Payment",
+        element: (
+          <AdminRoute>
+            <Payment/>
+          </AdminRoute>
+        ),
       },
     ],
   },

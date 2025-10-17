@@ -7,7 +7,7 @@ import { Link, useNavigate } from "react-router-dom";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
 
 export default function ProductDetails({ product, refetch }) {
-  console.log("product", product);
+  // console.log("product", product);
   const navigate = useNavigate();
   const { user } = useAuth();
   const [, userOne,] = useUsers();

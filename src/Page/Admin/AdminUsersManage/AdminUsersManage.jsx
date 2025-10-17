@@ -64,12 +64,10 @@ export default function AdminUsersManage() {
         <h2 className="text-lg font-medium text-gray-800 dark:text-white">
           All Users
         </h2>
-
         <span className="px-3 py-1 text-xs text-blue-600 bg-blue-100 rounded-full dark:bg-gray-800 dark:text-blue-400">
           {users?.length}
         </span>
       </div>
-
       <div className="flex flex-col mt-6">
         <div className="-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
           <div className="inline-block min-w-full py-2 align-middle md:px-6 lg:px-8">
@@ -85,32 +83,27 @@ export default function AdminUsersManage() {
                         <span>Name</span>
                       </div>
                     </th>
-
                     <th
                       scope="col"
                       className="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400"
                     >
                       <button className="flex items-center gap-x-2">
                         <span>Role</span>
-
                         <FaQuestion />
                       </button>
                     </th>
-
                     <th
                       scope="col"
                       className="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400"
                     >
                       Email address
                     </th>
-
                     <th
                       scope="col"
                       className="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400"
                     >
                       Make admin
                     </th>
-
                     <th scope="col" className="relative py-3.5 px-4">
                       <span className="sr-only">Edit</span>
                     </th>
@@ -139,7 +132,6 @@ export default function AdminUsersManage() {
                           </div>
                         </div>
                       </td>
-
                       <td className="px-4 py-4 text-sm text-gray-500 dark:text-gray-300 whitespace-nowrap">
                         {userOne?.role || "none"}
                       </td>
@@ -171,7 +163,6 @@ export default function AdminUsersManage() {
                           >
                             <RiDeleteBin6Fill />
                           </button>
-
                           <button className="text-xl text-gray-500 transition-colors duration-200 dark:hover:text-yellow-500 dark:text-gray-300 hover:text-yellow-500 focus:outline-none">
                             <FaPenToSquare />
                           </button>
