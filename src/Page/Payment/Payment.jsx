@@ -6,7 +6,7 @@ export default function Payment() {
     <div>
         <Title heading={"Payment"} subheding={"Please pay to order"}/>
         <div>
-            <h2 className="text-4xl">taka pakhi</h2>
+            <h2 className="text-4xl">payment for bekask</h2>
         </div>
     </div>
   )

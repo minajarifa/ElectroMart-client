@@ -6,10 +6,8 @@ import { LiaFirstOrderAlt } from "react-icons/lia";
 import { MdOutlineProductionQuantityLimits } from "react-icons/md";
 import { SiMyget } from "react-icons/si";
 import { Link, Outlet } from "react-router-dom";
-import useAdmin from "../hooks/useAdmin";
 
 export default function AdminDashboard() {
-  // const [isAdmin] = useAdmin();
   return (
     <div className="flex">
       {/*  */}
@@ -25,67 +23,67 @@ export default function AdminDashboard() {
                 to="/AdminDashboard/MyProfile"
                 className="flex items-center px-3 py-2 text-gray-600 transition-colors duration-300 transform rounded-lg dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-gray-200 hover:text-gray-700"
               >
-                <CgProfile />
+                <CgProfile/>
                 <span className="mx-2 text-sm font-medium">
-                  My Profile Management
+                  Admin Profile 
+                </span>
+              </Link>
+              <Link
+                to="/AdminDashboard/AddProduct"
+                className="flex items-center px-3 py-2 text-gray-600 transition-colors duration-300 transform rounded-lg dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-gray-200 hover:text-gray-700"
+              >
+                <IoAddCircleOutline/>
+                <span className="mx-2 text-sm font-medium">Add Product</span>
+              </Link>
+              <Link
+                to="/AdminDashboard/ProductsManagemment"
+                className="flex items-center px-3 py-2 text-gray-600 transition-colors duration-300 transform rounded-lg dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-gray-200 hover:text-gray-700"
+              >
+                <MdOutlineProductionQuantityLimits/>
+                <span className="mx-2 text-sm font-medium">
+                  Products Management
                 </span>
               </Link>
               <Link
                 to="/AdminDashboard/AdminUsersManage"
                 className="flex items-center px-3 py-2 text-gray-600 transition-colors duration-300 transform rounded-lg dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-gray-200 hover:text-gray-700"
               >
-                <GrUserSettings />
+                <GrUserSettings/>
                 <span className="mx-2 text-sm font-medium">
-                  Users Management
-                </span>
-              </Link>
-              <Link
-                to="/AdminDashboard/ProductsManagemment"
-                className="flex items-center px-3 py-2 text-gray-600 transition-colors duration-300 transform rounded-lg dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-gray-200 hover:text-gray-700"
-              >
-                <MdOutlineProductionQuantityLimits />
-                <span className="mx-2 text-sm font-medium">
-                  Products Management
+                All  Users 
                 </span>
               </Link>
               <Link
                 to="/AdminDashboard/AdminPage"
                 className="flex items-center px-3 py-2 text-gray-600 transition-colors duration-300 transform rounded-lg dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-gray-200 hover:text-gray-700"
               >
-                <LiaFirstOrderAlt />
+                <LiaFirstOrderAlt/>
                 <span className="mx-2 text-sm font-medium">
-                  Orders Management
+                  bookings products
                 </span>
               </Link>
-              <div className="dipvider"></div>
+              <div className="bg-red-600 dipvider"></div>
               {/* Header section Link */}
               <Link
                 to="/"
                 className="flex items-center px-3 py-2 text-gray-600 transition-colors duration-300 transform rounded-lg dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-gray-200 hover:text-gray-700"
               >
-                <IoHome />
+                <IoHome/>
                 <span className="mx-2 text-sm font-medium">Home</span>
               </Link>
               <Link
                 to="/ProductList"
                 className="flex items-center px-3 py-2 text-gray-600 transition-colors duration-300 transform rounded-lg dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-gray-200 hover:text-gray-700"
               >
-                <AiOutlineProduct />
+                <AiOutlineProduct/>
                 <span className="mx-2 text-sm font-medium">Produts List</span>
               </Link>
               {/* product managment Link */}
               <Link
-                to="/AdminDashboard/AddProduct"
-                className="flex items-center px-3 py-2 text-gray-600 transition-colors duration-300 transform rounded-lg dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-gray-200 hover:text-gray-700"
-              >
-                <IoAddCircleOutline />
-                <span className="mx-2 text-sm font-medium">Add Product</span>
-              </Link>
-              <Link
                 to="/ProductList"
                 className="flex items-center px-3 py-2 text-gray-600 transition-colors duration-300 transform rounded-lg dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-gray-200 hover:text-gray-700"
               >
-                <SiMyget />
+                <SiMyget/>
                 <span className="mx-2 text-sm font-medium">
                   My Products list
                 </span>
