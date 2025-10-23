@@ -11,7 +11,7 @@ export default function ProductsManagemment() {
       <div className="flex justify-between my-4">
         <h2> Products : {products?.length}</h2>
         <Link to="/AdminDashboard/Payment">
-        <button className="btn btn-primary">Primary</button>
+        <button className="btn btn-primary">Payment</button>
         </Link>
       </div>
       <div className="grid gap-5 lg:grid-cols-2 md:grid-cols-2 sm:grid-cols-1">
