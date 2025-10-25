@@ -29,7 +29,7 @@ export default function CheckoutForm() {
     }
   };
   useEffect(()=>{
-    axiosSecure
+    axiosSecure.post('/create-payment-intent')
   },[axiosSecure])
   return (
     <div>
