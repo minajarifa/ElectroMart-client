@@ -16,12 +16,14 @@ export default function CheckoutForm() {
   const totalPrice = products.reduce((total, item) => total + item.price, 0);
   console.log(totalPrice);
   useEffect(() => {
-    axiosSecure
-      .post(`/create-payment-intent`, { price: totalPrice })
-      .then((res) => {
-        console.log(res.data.clientSecret);
-        setClientSecret(res.data.clientSecret);
-      });
+    if (totalPrice > 0) {
+      axiosSecure
+        .post(`/create-payment-intent`, { price: totalPrice })
+        .then((res) => {
+          console.log(res.data.clientSecret);
+          setClientSecret(res.data.clientSecret);
+        });
+    }
   }, [axiosSecure, totalPrice]);
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -62,6 +64,18 @@ export default function CheckoutForm() {
       if (paymentIntent.status === "succceeded") {
         console.log("transaction id", paymentIntent.id);
         setTransactionId(paymentIntent.id);
+        // now save the payment in the database
+        const payment = {
+          email: user.email,
+          price: totalPrice,
+          transactionId: paymentIntent.id,
+          data: new Date(), // TODO
+          cartIds: cart.map((item) => item?._id),
+          menuItemIds: cart.map((item) => item.menuId),
+          status: "pending",
+        };
+        const res = await axiosSecure.post("/payment", payment);
+        console.log("payment saved", res.data);
       }
     }
   };
