@@ -50,7 +50,7 @@ export default function AuthProvider({ children }) {
   useEffect(() => {
     const unsunscribe = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);
-      setLoading(false);
+     
       console.log("current User", currentUser);
       if (currentUser) {
         //get token and store client
@@ -58,10 +58,12 @@ export default function AuthProvider({ children }) {
         axiosURL.post("/jwt", userInfo).then((res) => {
           if (res.data.token) {
             localStorage.setItem("access-token", res.data.token);
+             setLoading(false);
           }
         });
       } else {
         localStorage.removeItem("access-token");
+         setLoading(false);
       }
     });
     return () => {
