@@ -87,7 +87,7 @@ export const router = createBrowserRouter([
             <ProductUpdate/>
           </AdminRoute>
         ),
-        loader:({params})=>fetch(`http://localhost:5000/products/${params.id}`)
+        loader:({params})=>fetch(`https://electromart-server.vercel.app/products/${params.id}`)
       },
       {
         path: "/AdminDashboard/Payment",

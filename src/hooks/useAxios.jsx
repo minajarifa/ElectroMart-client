@@ -1,7 +1,7 @@
 import axios from "axios"
 
 export const axiosURL = axios.create({
-    baseURL:"http://localhost:5000",
+    baseURL:"https://electromart-server.vercel.app",
      withCredentials: true,
 })
 
